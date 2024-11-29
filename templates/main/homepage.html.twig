@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-12">
+        <h3>List of speakers at the SymfonyCon Vienna 2024</h3>
+        <div class="divTable table table-striped table-dark table-borderless table-hover">
+            <div class="divTableHeading">
+                <div class="divTableRow bg-info">
+                    <div class="divTableHead">Picture</div>
+                    <div class="divTableHead">Speaker</div>
+                    <div class="divTableHead">City</div>
+                    <div class="divTableHead">Distance from Vienna</div>
+                </div>
+            </div>
+
+            {% for speaker in speakers %}
+                <div class="divTableRow">
+                    <div class="divTableCell">
+                        {% if speaker.picture %}
+                            <img style="height: 140px" src="{{ speaker.picture }}"/>
+                        {% else %}
+                            {# Thanks https://github.com/ozgrozer/100k-faces?tab=readme-ov-file #}
+                            <img style="height: 140px" src="https://randomspeaker.me/api/portraits/men/{{ speaker.id }}.jpg"/>
+                        {% endif %}
+                    </div>
+                    <div class="divTableCell">
+                        {{ speaker.firstname }} {{ speaker.lastname }} ({{ speaker.username }})
+                    </div>
+                    <div class="divTableCell">
+                        {{ speaker.city ?? '' }}
+                    </div>
+                    <div class="divTableCell">
+                        {{ (speaker.distance/1000) | number_format }} km
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
