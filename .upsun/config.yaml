@@ -58,6 +58,11 @@ applications:
                 set -x -e
 
                 symfony-deploy
+                
+                # The sanitization of the database if it's not production
+                if [ "$PLATFORM_ENVIRONMENT_TYPE" != production ]; then
+                    php bin/console app:sanitize-data
+                fi
 
         crons:
             security-check:

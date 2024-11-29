@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class SpeakerRestController extends AbstractController
+class SpeakerController extends AbstractController
 {
     #[Route('/api/get-speaker-list', methods: ['GET'])]
     public function getSpeakerList(SpeakerRepository $speakerRepository): Response
