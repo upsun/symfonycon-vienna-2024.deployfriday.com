@@ -15,4 +15,13 @@ class SpeakerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Speaker::class);
     }
+
+    public function getSpeakerPodium()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.distance', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }
