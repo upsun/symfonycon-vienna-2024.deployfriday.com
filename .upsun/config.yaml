@@ -2,7 +2,9 @@ routes:
     "https://{all}/": { type: upstream, upstream: "app:http" }
     "http://{all}/": { type: redirect, to: "https://{all}/" }
 
-services: {}
+services:
+    database:
+        type: "postgresql:16"
     
 
 applications:
@@ -21,7 +23,10 @@ applications:
                 - mbstring
                 - sodium
                 - xsl
-                
+                - pdo_pgsql
+        
+        relationships:
+            database:   
 
         variables:
             php:
