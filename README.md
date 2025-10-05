@@ -12,7 +12,7 @@
 symfony new symfonycon-vienna-2024 --upsun
 cd symfonycon-vienna-2024
 symfony project:create --title symfonycon-vienna-2024
-symfony deploy
+symfony push
 ```
 
 ### Configure the Symfony app with the speaker list
@@ -315,7 +315,7 @@ You should see a basic list of all your speakers from the fixtures.
 Then, AC your changes:
 ```shell
 git add assets/styles/app.css src/Controller/MainController.php templates/main/homepage.html.twig && git commit -m "adding styled homepage with speaker list"
-symfony deploy
+symfony push
 ```
 
 > **Please note**: After first deploy, only your migration files are executed, but speaker table is empty.
@@ -483,7 +483,7 @@ applications:
 Finally, AC your changes and deploy:
 ```shell
 git add src/Command/SanitizeDataCommand.php .upsun/config.yaml && git commit -m "adding automatic sanitization of data on preview envs"
-symfony deploy
+symfony push
 ```
 
 Ready to start!!
